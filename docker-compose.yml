@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:15
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/.docker-conf/thc-cbh/db:/var/lib/postgresql/data:delegated
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      interval: 5s
+      retries: 5
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      timeout: 5s
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    environment:
+      - DATABASE_DSN=${DATABASE_DSN}
+    healthcheck:
+      interval: 5s
+      retries: 5
+      start_period: 5s
+      test: curl --fail http://localhost:3000/healthcheck || exit 1
+      timeout: 5s
