@@ -231,4 +231,36 @@ func TestGetAvailableShifts(t *testing.T) {
 		assert.NoError(t, err)
 		assert.Equal(t, &worker.GetAvailableShiftsResponse{}, availableShifts)
 	})
+
+	t.Run("should successfully get available shifts using default limit when given limit exceeds the maximum", func(t *testing.T) {
+		t.Parallel()
+
+		ctrl := gomock.NewController(t)
+		defer ctrl.Finish()
+
+		mockWorkerRepository := domain.NewMockWorkerRepository(ctrl)
+		mockWorkerRepository.
+			EXPECT().
+			GetAvailableShifts(ctx, &fakeCursor, worker.DefaultLimit, fakeWorkerID, fakeStartDate, fakeEndDate).
+			Times(1).
+			Return(fakeShifts, nil)
+
+		us := worker.NewAvailableShifts(mockWorkerRepository)
+
+		availableShifts, err := us.GetAvailableShifts(
+			ctx,
+			worker.GetAvailableShiftsRequest{
+				Cursor:   &fakeCursor,
+				End:      fakeEndDate,
+				Limit:    99999,
+				Start:    fakeStartDate,
+				WorkerID: fakeWorkerID,
+			},
+		)
+		assert.NoError(t, err)
+		assert.Equal(t, &worker.GetAvailableShiftsResponse{
+			NextCursor: cursor.New(cursor.DirectionAfter, "321"),
+			Shifts:     fakeShifts,
+		}, availableShifts)
+	})
 }

@@ -11,7 +11,10 @@ import (
 	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/domain"
 )
 
-const DefaultLimit = 20
+const (
+	DefaultLimit = 20
+	MaxLimit     = 200
+)
 
 //go:generate mockgen -destination=internal/usecase/worker/available_shifts_mock.go -package=worker -source=internal/usecase/worker/available_shifts.go AvailableShifts
 type AvailableShifts interface {
@@ -42,7 +45,7 @@ type GetAvailableShiftsResponse struct {
 }
 
 func (as *availableShifts) GetAvailableShifts(ctx context.Context, req GetAvailableShiftsRequest) (*GetAvailableShiftsResponse, error) {
-	if req.Limit <= 0 {
+	if req.Limit <= 0 || req.Limit > MaxLimit {
 		req.Limit = DefaultLimit
 	}
 
