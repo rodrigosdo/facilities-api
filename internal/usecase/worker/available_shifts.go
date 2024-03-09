@@ -6,9 +6,10 @@ import (
 	"sort"
 	"strconv"
 
+	"github.com/rodrigosdo/facilities-api/internal/cursor"
+	"github.com/rodrigosdo/facilities-api/internal/domain"
+
 	"cloud.google.com/go/civil"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/cursor"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/domain"
 )
 
 const (

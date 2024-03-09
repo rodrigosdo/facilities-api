@@ -5,10 +5,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/rodrigosdo/facilities-api/internal/config"
+	"github.com/rodrigosdo/facilities-api/internal/cursor"
+	"github.com/rodrigosdo/facilities-api/internal/postgres"
+
 	"cloud.google.com/go/civil"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/config"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/cursor"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/postgres"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -133,11 +134,11 @@ func TestGetAvailableShifts(t *testing.T) {
 	t.Run("should return an error if an invalid cursor is given", func(t *testing.T) {
 		t.Parallel()
 
-		const unknowCursorDirection = cursor.Direction("unknow")
+		const unknownCursorDirection = cursor.Direction("unknown")
 
 		availableShifts, err := database.GetAvailableShifts(
 			ctx,
-			&cursor.Cursor{Direction: unknowCursorDirection, Reference: "21"},
+			&cursor.Cursor{Direction: unknownCursorDirection, Reference: "21"},
 			10,
 			101,
 			civil.Date{},

@@ -4,11 +4,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/config"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/logger"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/postgres"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/server"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/usecase/worker"
+	"github.com/rodrigosdo/facilities-api/internal/config"
+	"github.com/rodrigosdo/facilities-api/internal/logger"
+	"github.com/rodrigosdo/facilities-api/internal/postgres"
+	"github.com/rodrigosdo/facilities-api/internal/server"
+	"github.com/rodrigosdo/facilities-api/internal/usecase/worker"
+
 	"go.uber.org/zap"
 )
 

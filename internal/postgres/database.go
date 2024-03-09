@@ -3,8 +3,9 @@ package postgres
 import (
 	"context"
 
+	"github.com/rodrigosdo/facilities-api/internal/config"
+
 	"github.com/Masterminds/squirrel"
-	"github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/config"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )

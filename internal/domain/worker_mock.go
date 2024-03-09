@@ -10,7 +10,7 @@ import (
 
 	civil "cloud.google.com/go/civil"
 	gomock "github.com/golang/mock/gomock"
-	cursor "github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101/internal/cursor"
+	cursor "github.com/rodrigosdo/facilities-api/internal/cursor"
 )
 
 // MockWorkerRepository is a mock of WorkerRepository interface.

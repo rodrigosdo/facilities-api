@@ -1,4 +1,4 @@
-module github.com/hatchways-community/2e26b1bef5c64db4a4d3e9decab77101
+module github.com/rodrigosdo/facilities-api
 
 go 1.20
 
