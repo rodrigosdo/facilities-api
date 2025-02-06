@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go v0.112.1
 	github.com/Masterminds/squirrel v1.5.4
 	github.com/NYTimes/gziphandler v1.1.1
-	github.com/golang/mock v1.4.4
+	github.com/golang/mock v1.6.0
 	github.com/jackc/pgx/v5 v5.5.4
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/justinas/alice v1.2.0
