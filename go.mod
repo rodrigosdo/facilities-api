@@ -3,7 +3,7 @@ module github.com/rodrigosdo/facilities-api
 go 1.20
 
 require (
-	cloud.google.com/go v0.118.1
+	cloud.google.com/go v0.118.2
 	github.com/Masterminds/squirrel v1.5.4
 	github.com/NYTimes/gziphandler v1.1.1
 	github.com/golang/mock v1.6.0
